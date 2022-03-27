@@ -6,6 +6,7 @@ import { ScamScoreRoutes } from './routes/scam-score.config';
 
 import { publicConfig } from '../config/public.config';
 
+import base64url from 'base64url'
 import { logger } from './helper/logger';
 
 const app: Application = express();
@@ -22,5 +23,4 @@ app.get('/', (req: Request, res: Response) => {
 
 server.listen(port, () => {
     logger.info(`Server running at http://localhost:${port}`);
-    
 });
