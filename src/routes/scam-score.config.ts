@@ -15,6 +15,54 @@ export class ScamScoreRoutes extends RoutesConfig {
     }
 
     routes() {
+        /**
+        * @swagger
+        * /scamscore:
+        *   get:
+        *     summary: Load the payload from virus total and save it in database.
+        *     description: Load the last_analysis_stats attribute from https://developers.virustotal.com/reference/url-info and save the calculated scam score in Postgres database located in ElephantSQL.
+        *     responses:
+        *       200:
+        *         description: Newly created analysis.
+        *         content:
+        *           application/json:
+        *             schema:
+        *               type: object
+        *               properties:
+        *                       urlId:
+        *                         type: string
+        *                         description: The url ID for analysis.
+        *                         example: 'aHR0cDovL3d3dy5nb29nbGUuY29t'
+        *                       url:
+        *                         type: string
+        *                         description: The url for analysis.
+        *                         example: 'http://www.google.com'
+        *                       harmless:
+        *                         type: integer
+        *                         description: The url ID for analysis.
+        *                         example: 85,
+        *                       malicious:
+        *                         type: integer
+        *                         example: 0,
+        *                       suspicious:
+        *                         type: integer
+        *                         example: 0,
+        *                       undetected:
+        *                         type: integer
+        *                         example: 8,
+        *                       timeout:
+        *                         type: integer
+        *                         example: 0,
+        *                       totalResults:
+        *                         type: integer
+        *                         example: 93,
+        *                       scamScore:
+        *                         type: integer
+        *                         example: 0,
+        *                       lastAnalysisDate:
+        *                         type: date
+        *                         example: 1970-01-20T01:54:47.997Z'
+        */
         this.app.route(`/scamscore`)
             .get(async (req: Request, res: Response, next: NextFunction) => {
                 try {
@@ -29,6 +77,59 @@ export class ScamScoreRoutes extends RoutesConfig {
                 }
             });
 
+        /**
+        * @swagger
+        * /analyses:
+        *   get:
+        *     summary: Load the list of analysis from database.
+        *     description: Load the list of analysis from Postgres database located in ElephantSQL.
+        *     responses:
+        *       200:
+        *         description: All the list of analysis executed.
+        *         content:
+        *           application/json:
+        *             schema:
+        *                   type: array
+        *                   items:
+        *                     type: object
+        *                     properties:
+        *                       id:
+        *                         type: integer
+        *                         example: 0,
+        *                       urlId:
+        *                         type: string
+        *                         description: The url ID for analysis.
+        *                         example: 'aHR0cDovL3d3dy5nb29nbGUuY29t'
+        *                       url:
+        *                         type: string
+        *                         description: The url for analysis.
+        *                         example: 'http://www.google.com'
+        *                       harmless:
+        *                         type: integer
+        *                         description: The url ID for analysis.
+        *                         example: 85,
+        *                       malicious:
+        *                         type: integer
+        *                         example: 0,
+        *                       suspicious:
+        *                         type: integer
+        *                         example: 0,
+        *                       undetected:
+        *                         type: integer
+        *                         example: 8,
+        *                       timeout:
+        *                         type: integer
+        *                         example: 0,
+        *                       totalResults:
+        *                         type: integer
+        *                         example: 93,
+        *                       scamScore:
+        *                         type: integer
+        *                         example: 0,
+        *                       lastAnalysisDate:
+        *                         type: date
+        *                         example: 1970-01-20T01:54:47.997Z'
+        */
         this.app.route(`/analyses`)
             .get(async (req: Request, res: Response, next: NextFunction) => {
                 try {
@@ -43,6 +144,70 @@ export class ScamScoreRoutes extends RoutesConfig {
                 }
             });
 
+        /**
+        * @swagger
+        * /analyses/range:
+        *   get:
+        *     summary: Load the list of analysis with in the specified date range database.
+        *     description: Load the list of analysis with in the specified date range from Postgres database located in ElephantSQL.
+        *     parameters:
+        *       - in: path
+        *         name: from
+        *         required: true
+        *         schema:
+        *           type: date
+        *       - in: path
+        *         name: to
+        *         required: true
+        *         schema:
+        *           type: date
+        *     responses:
+        *       200:
+        *         description: All the list of analysis executed.
+        *         content:
+        *           application/json:
+        *             schema:
+        *                   type: array
+        *                   items:
+        *                     type: object
+        *                     properties:
+        *                       id:
+        *                         type: integer
+        *                         example: 0,
+        *                       urlId:
+        *                         type: string
+        *                         description: The url ID for analysis.
+        *                         example: 'aHR0cDovL3d3dy5nb29nbGUuY29t'
+        *                       url:
+        *                         type: string
+        *                         description: The url for analysis.
+        *                         example: 'http://www.google.com'
+        *                       harmless:
+        *                         type: integer
+        *                         description: The url ID for analysis.
+        *                         example: 85,
+        *                       malicious:
+        *                         type: integer
+        *                         example: 0,
+        *                       suspicious:
+        *                         type: integer
+        *                         example: 0,
+        *                       undetected:
+        *                         type: integer
+        *                         example: 8,
+        *                       timeout:
+        *                         type: integer
+        *                         example: 0,
+        *                       totalResults:
+        *                         type: integer
+        *                         example: 93,
+        *                       scamScore:
+        *                         type: integer
+        *                         example: 0,
+        *                       lastAnalysisDate:
+        *                         type: date
+        *                         example: 1970-01-20T01:54:47.997Z'
+        */
         this.app.route(`/analyses/range`)
             .get(async (req: Request, res: Response, next: NextFunction) => {
                 try {
