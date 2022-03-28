@@ -22,8 +22,8 @@ export class ScamScoreRoutes extends RoutesConfig {
                     logger.info(`ScamScoreRoutes : scamscore : ${url}`);
 
                     const scamScore: IScamScore = await this.virusTotalController.getSaveScamScore(url);
-
-                    res.status(200).send(scamScore);
+                    res.status(200);
+                    res.json(scamScore);
                 } catch(error) {
                     next(error);
                 }
@@ -36,7 +36,8 @@ export class ScamScoreRoutes extends RoutesConfig {
 
                     const analysis: Array<IScamScore> = await this.virusTotalController.getAnalyses();
 
-                    res.status(200).send(analysis);
+                    res.status(200);
+                    res.json(analysis);
                 } catch(error) {
                     next(error);
                 }
@@ -52,7 +53,8 @@ export class ScamScoreRoutes extends RoutesConfig {
                     const endDate: Date = new Date(to.toString());
                     const analysis: Array<IScamScore> = await this.virusTotalController.getFromToAnalyses(startDate, endDate);
 
-                    res.status(200).send(analysis);
+                    res.status(200);
+                    res.json(analysis);
                 } catch(error) {
                     next(error);
                 }

@@ -1,7 +1,6 @@
 import { VirusTotalService } from "../service/virus-total.service";
 import { logger } from "../helper/logger";
 import { IScamScore } from "../interface/scam-score.interface";
-import { ScamScoreAnalysis } from "../model/scam-score-analysis.model";
 import { ScamScoreAnalysisService } from "../service/scam-score-analysis.service";
 
 
