@@ -24,8 +24,8 @@ const options = {
     definition: {
       openapi: '3.0.0',
       info: {
-        title: 'Hello World',
-        version: '1.0.0',
+        title: 'Scam score',
+        version: '1.1.0',
       },
     },
     apis: ['./src/routes/*.config.ts'], // files containing annotations as above

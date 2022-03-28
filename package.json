@@ -4,8 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "nodemon --config nodemon.json src/app.ts",
-    "test": "jest"
+    "start:dev": "nodemon --config nodemon.json src/app.ts",
+    "test:unit": "jest"
   },
   "dependencies": {
     "@types/pg": "^8.6.5",
