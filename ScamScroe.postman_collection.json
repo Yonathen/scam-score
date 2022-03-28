@@ -1,0 +1,80 @@
+{
+	"info": {
+		"_postman_id": "cbc0ae02-75e0-4222-8d6c-d75506458f79",
+		"name": "ScamScroe",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Fetch & Save Scam Score",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3001/scamscore?url=http://www.google.com",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"scamscore"
+					],
+					"query": [
+						{
+							"key": "url",
+							"value": "http://www.google.com"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Analyses",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3001/analyses",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"analyses"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Analyses By Date Range",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3001/analyses/range?from=2022-03-22T15:32:10.206Z&to=2022-03-23T15:32:10.206Z",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"analyses",
+						"range"
+					],
+					"query": [
+						{
+							"key": "from",
+							"value": "2022-03-22T15:32:10.206Z"
+						},
+						{
+							"key": "to",
+							"value": "2022-03-23T15:32:10.206Z"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

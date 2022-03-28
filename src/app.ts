@@ -8,7 +8,9 @@ import { publicConfig } from '../config/public.config';
 
 import { logger } from './helper/logger';
 import { errorHandler } from './helper/error/error-handler';
-import { connect } from '../config/db.config';
+
+import swaggerJSDoc from 'swagger-jsdoc';
+import * as swaggerUi from 'swagger-ui-express';
 
 const app: Application = express();
 const server: Server = createServer(app);
@@ -17,6 +19,20 @@ const { port } = publicConfig;
 const routes: Array<RoutesConfig> = [
     new ScamScoreRoutes(app)
 ];
+
+const options = {
+    definition: {
+      openapi: '3.0.0',
+      info: {
+        title: 'Hello World',
+        version: '1.0.0',
+      },
+    },
+    apis: ['./src/routes/*.config.ts'], // files containing annotations as above
+  };
+const swaggerSpec = swaggerJSDoc(options);
+
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.get('/', (req: Request, res: Response) => {
     res.status(200).send(`Server running at http://localhost:${port}`);
