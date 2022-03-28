@@ -1,4 +1,4 @@
-import { Application, Request, Response } from "express";
+import { Application, NextFunction, Request, Response } from "express";
 import { RoutesConfig } from "./routes.config";
 import { logger } from "../helper/logger";
 import { VirusTotalController } from "../controller/scam-score.controller";
@@ -16,13 +16,17 @@ export class ScamScoreRoutes extends RoutesConfig {
 
     routes() {
         this.app.route(`/scamscore`)
-            .get(async (req: Request, res: Response) => {
-                const { url = '' } = req.query || {};
-                logger.info(`ScamScoreRoutes : scamscore : ${url}`);
+            .get(async (req: Request, res: Response, next: NextFunction) => {
+                try {
+                    const { url = '' } = req.query || {};
+                    logger.info(`ScamScoreRoutes : scamscore : ${url}`);
 
-                const scamScore: IScamScore = await this.virusTotalController.getScamScore(url);
+                    const scamScore: IScamScore = await this.virusTotalController.getScamScore(url);
 
-                res.status(200).send(scamScore);
+                    res.status(200).send(scamScore);
+                } catch(error) {
+                    next(error);
+                }
             })
     }
 }
