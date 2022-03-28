@@ -21,19 +21,19 @@ In the project directory, you can run:
 
 ### `yarn start:dev`
 
-Runs the app in the development mode.\
-Open [http://localhost:3001](http://localhost:3001) to view it in your browser.
+- Runs the app in the development mode.\
+- Open [http://localhost:3001](http://localhost:3001) in post man and use the following postman collection from root folder
+  - Post man collection : ScamScore.postman_collect.json
 
 ### `yarn test:unit`
 
 Launches the unit test in interactive manner.
 
-## API Endpoints
-
--   Virus Total: https://developers.virustotal.com/reference/url-info
--   Database: 'postgres://yfkywvje:6yQcuqDEuULXYACy_vMxlxrllQMqMEwo@hattie.db.elephantsql.com/yfkywvje'
-
 ## Documentation
 
 - Swagger Documentation : http://localhost:3001/docs
-- Post man collection : ScamScore.postman_collect.json
+
+## External API Endpoints
+
+-   Virus Total: https://developers.virustotal.com/reference/url-info
+-   Database: postgres://yfkywvje:6yQcuqDEuULXYACy_vMxlxrllQMqMEwo@hattie.db.elephantsql.com/yfkywvje
