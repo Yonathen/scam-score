@@ -25,7 +25,7 @@ const options = {
       openapi: '3.0.0',
       info: {
         title: 'Scam score',
-        version: '1.1.0',
+        version: '1.2.0',
       },
     },
     apis: ['./src/routes/*.config.ts'], // files containing annotations as above
