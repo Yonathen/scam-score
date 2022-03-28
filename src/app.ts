@@ -7,6 +7,7 @@ import { ScamScoreRoutes } from './routes/scam-score.config';
 import { publicConfig } from '../config/public.config';
 
 import { logger } from './helper/logger';
+import { errorHandler } from './helper/error/error-handler';
 
 const app: Application = express();
 const server: Server = createServer(app);
@@ -22,5 +23,15 @@ app.get('/', (req: Request, res: Response) => {
 
 server.listen(port, () => {
     logger.info(`Server running at http://localhost:${port}`);
-    
+});
+
+process.on('unhandledRejection', (reason: Error, promise: Promise<any>) => {
+    throw reason;
+});
+
+process.on('uncaughtException', (error: Error) => {
+    errorHandler.handleError(error);
+    if (!errorHandler.isTrustedError(error)) {
+        process.exit(1);
+    }
 });
