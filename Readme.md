@@ -24,6 +24,8 @@ In the project directory, you can run:
 - Runs the app in the development mode.\
 - Open [http://localhost:3001](http://localhost:3001) in post man and use the following postman collection from root folder
   - Post man collection : [ScamScore.postman_collect.json](ScamScroe.postman_collection.json)
+- Or use the following curl command
+  - ```curl --request GET 'localhost:3001/scamscore?url=http://google.com'```
 
 ### `yarn test:unit`
 
