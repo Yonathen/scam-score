@@ -10,4 +10,6 @@ export interface IScamScore {
     lastAnalysisDate: Date;
     totalResults: number;
     scamScore: number;
+    createdAt?: Date;
+    updatedAt?: Date;
 }

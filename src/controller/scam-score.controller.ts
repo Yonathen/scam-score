@@ -15,9 +15,19 @@ export class VirusTotalController {
         this.scamScoreAnalysisService = new ScamScoreAnalysisService();
     }
 
-    async getScamScore(url: any): Promise<IScamScore> {
-        logger.info(`Controller : getScamScore : ${url}`);
+    async getSaveScamScore(url: any): Promise<IScamScore> {
+        logger.info(`Controller : getSaveScamScore : ${url}`);
         const scamScore: IScamScore = await this.virusTotalService.calculateScamScore(url);
         return await this.scamScoreAnalysisService.createAnalysis(scamScore);
+    }
+
+    async getAnalyses(): Promise<Array<IScamScore>> {
+        logger.info(`Controller : getAnalyses`);
+        return await this.scamScoreAnalysisService.getAnalyses();
+    }
+
+    async getFromToAnalyses(startDate: Date, endDate: Date): Promise<Array<IScamScore>> {
+        logger.info(`Controller : getFromToAnalyses`);
+        return await this.scamScoreAnalysisService.getFromToAnalyses(startDate, endDate);
     }
 }
