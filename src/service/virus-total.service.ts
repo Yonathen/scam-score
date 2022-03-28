@@ -20,7 +20,7 @@ export class VirusTotalService {
     }
 
     async fetchVirusTotal(url: string) {
-        const virusTotalResponse = await axios.get(`/${base64url(url)}`, this.request);
+        const virusTotalResponse = await axios.get(`/${url}`, this.request);
         if(!virusTotalResponse?.data?.data?.attributes) {
             throw new APIError();
         }
@@ -35,14 +35,26 @@ export class VirusTotalService {
     }
 
     async calculateScamScore(url: string): Promise<IScamScore> {
-        const { lastAnalysisDate, lastAnalysisStat } = await this.fetchVirusTotal(url);
+        const urlId: string = base64url(url);
+        const { lastAnalysisDate, lastAnalysisStat } = await this.fetchVirusTotal(urlId);
         
         const { harmless = 0, malicious = 0, suspicious = 1, undetected = 0, timeout = 0 } = lastAnalysisStat || {};
         const totalResults = harmless + malicious + suspicious + undetected + timeout;
         const scamScore = (100 / (totalResults - undetected - timeout) * (malicious + suspicious));
         logger.info(`VirusTotalService : calculateScamScore : ${scamScore}`);
 
-        return { harmless, malicious, suspicious, undetected, timeout, lastAnalysisDate, totalResults, scamScore };
+        return { 
+            url,
+            urlId, 
+            harmless,
+            malicious,
+            suspicious,
+            undetected,
+            timeout,
+            totalResults,
+            scamScore,
+            lastAnalysisDate: new Date(lastAnalysisDate),
+        };
     }
 
 }

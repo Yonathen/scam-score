@@ -8,6 +8,7 @@ import { publicConfig } from '../config/public.config';
 
 import { logger } from './helper/logger';
 import { errorHandler } from './helper/error/error-handler';
+import { connect } from '../config/db.config';
 
 const app: Application = express();
 const server: Server = createServer(app);
@@ -21,7 +22,7 @@ app.get('/', (req: Request, res: Response) => {
     res.status(200).send(`Server running at http://localhost:${port}`);
 });
 
-server.listen(port, () => {
+server.listen(port, async () => {
     logger.info(`Server running at http://localhost:${port}`);
 });
 
