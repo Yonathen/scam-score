@@ -44,6 +44,7 @@ export class VirusTotalService {
         logger.info(`VirusTotalService : calculateScamScore : ${scamScore}`);
 
         return { 
+            url,
             urlId, 
             harmless,
             malicious,

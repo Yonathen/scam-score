@@ -6,8 +6,9 @@ import { publicConfig } from "./public.config";
 export const connect = () => {
 
     const { host, dialect, db, dbUser, dbPassword } = publicConfig;
+    const operatorsAliases: any = false;
     logger.info(`${dialect}://${dbUser}:${dbPassword}@${host}/${db}`);
-    const sequelize = new Sequelize(`${dialect}://${dbUser}:${dbPassword}@${host}/${db}`, {repositoryMode: true});
+    const sequelize = new Sequelize(`${dialect}://${dbUser}:${dbPassword}@${host}/${db}`, {operatorsAliases, repositoryMode: true});
 
     sequelize.addModels([ScamScoreAnalysis]);
 

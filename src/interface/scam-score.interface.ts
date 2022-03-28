@@ -1,5 +1,6 @@
 
 export interface IScamScore {
+    url: string,
     urlId: string;
     harmless: number;
     malicious: number;

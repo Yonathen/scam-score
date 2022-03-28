@@ -32,7 +32,4 @@ export class ScamScoreAnalysis extends Model {
 
     @Column(DataType.DATE)
     lastAnalysisDate!: Date;
-    
-    @Column(DataType.DATE)
-    createDate!: Date;
 }
