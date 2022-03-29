@@ -27,7 +27,7 @@ In the project directory, you can run:
 - Or use the following curl command
   - ```curl --request GET 'localhost:3001/scamscore?url=http://google.com'```
   - ```curl --request GET 'localhost:3001/analyses'```
-  - ```curl --request GET 'localhost:3001/analyses/range?from=2022-03-20T01:54:47.997Z&2022-03-25T01:54:47.997Z'
+  - ```curl --request GET 'localhost:3001/analyses/range?from=2022-03-20T01:54:47.997Z&2022-03-25T01:54:47.997Z```
 
 ### `yarn test:unit`
 
