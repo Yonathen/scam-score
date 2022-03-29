@@ -29,6 +29,7 @@ In the project directory, you can run:
   - ```curl --request GET 'localhost:3001/analyses'```
   - ```curl --request GET 'localhost:3001/analyses/range?from=2022-03-20T01:54:47.997Z&2022-03-25T01:54:47.997Z```
 
+
 ### `yarn test:unit`
 
 Launches the unit test in interactive manner.
